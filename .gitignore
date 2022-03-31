@@ -133,3 +133,4 @@ $RECYCLE.BIN/
 _NCrunch*
 .vs/StorageShortageWarningSystem/xs/project-cache
 .vs/StorageShortageWarningSystem/xs/UserPrefs.xml
+ssws-widget/.vscode
