@@ -1,8 +1,10 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { DriveWidgetComponent } from './drive-widget/drive-widget.component';
+import { DataService } from './services/data.service';
 
 @NgModule({
   declarations: [
@@ -10,9 +12,10 @@ import { DriveWidgetComponent } from './drive-widget/drive-widget.component';
     DriveWidgetComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
