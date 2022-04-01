@@ -8,10 +8,5 @@ import { DataService } from './services/data.service';
 })
 export class AppComponent {
   title = 'ssws-widget';
-  data = [];
-  constructor(private dataService: DataService) {
-    this.dataService.getJson().subscribe(data => {
-      this.data = data
-    });
-  }
+  constructor() {}
 }

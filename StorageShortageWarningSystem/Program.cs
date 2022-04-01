@@ -19,6 +19,7 @@ namespace StorageShortageWarningSystem
                 {
                     _drives.Add(new Drive()
                     {
+                        MachineName = Environment.MachineName,
                         Name = d.Name,
                         TotalSize = d.TotalSize,
                         AvailableFreeSpace = d.AvailableFreeSpace

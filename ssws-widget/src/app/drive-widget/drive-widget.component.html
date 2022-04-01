@@ -1,4 +1,6 @@
-<div>
-    <p>HL6X</p>
-    <p>10 GB Free</p>
+<div *ngFor="let d of data">
+    <p>{{d['MachineName']}}</p>
+    <p>{{d['Name']}}</p>
+    <p>Total Size: {{d['TotalSize'] | bytesToGigabytes | number : '1.0-0'}}</p>
+    <p>Free Space: {{d['AvailableFreeSpace'] | bytesToGigabytes | number : '1.0-0'}}</p>
 </div>
