@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../services/data.service';
-import { Subscription } from 'rxjs';
-
 
 
 @Component({
@@ -11,13 +9,14 @@ import { Subscription } from 'rxjs';
 })
 export class DriveWidgetComponent implements OnInit {
   data = [];
+  pieData = [];
   constructor(private dataService: DataService) {
     this.dataService.getJson().subscribe(data => {
-      this.data = data
+      this.data = data;
       console.log(data);
     });
   }
 
   ngOnInit(): void {}
-
+  
   }

@@ -1,6 +1,11 @@
 <div *ngFor="let d of data">
-    <p>{{d['MachineName']}}</p>
-    <p>{{d['Name']}}</p>
-    <p>Total Size: {{d['TotalSize'] | bytesToGigabytes | number : '1.0-0'}}</p>
-    <p>Free Space: {{d['AvailableFreeSpace'] | bytesToGigabytes | number : '1.0-0'}}</p>
+  <p>{{d['MachineName']}}</p>
+  <p>{{d['Name']}}</p>
+  <p>Total Size: {{d['TotalSize'] | bytesToGigabytes | number : '1.0-0'}}</p>
+  <p>Free Space: {{d['AvailableFreeSpace'] | bytesToGigabytes | number : '1.0-0'}}</p>
+  <ejs-accumulationchart>
+    <e-accumulation-series-collection>
+      <e-accumulation-series type='Pie' radius="20%" [dataSource]='[{name: "Used Space", value: d["TotalSize"] - d["AvailableFreeSpace"]}, {name: "Used Space", value: d["AvailableFreeSpace"]}]' xName='name' yName='value'></e-accumulation-series>
+    </e-accumulation-series-collection>
+  </ejs-accumulationchart>
 </div>
