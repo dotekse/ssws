@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DriveInformation } from 'src/types';
 import { DataService } from '../services/data.service';
 
 
@@ -8,15 +9,33 @@ import { DataService } from '../services/data.service';
   styleUrls: ['./drive-widget.component.sass']
 })
 export class DriveWidgetComponent implements OnInit {
-  data = [];
+  data: any[] = [];
   pieData = [];
+  datalabel = { visible: true };
   constructor(private dataService: DataService) {
-    this.dataService.getJson().subscribe(data => {
-      this.data = data;
-      console.log(data);
-    });
+    
   }
 
-  ngOnInit(): void {}
-  
+  ngOnInit(): void {
+    
+    this.dataService.getJson().subscribe(data => {
+      this.data = this.transformToDataSource(data);
+      console.log(this.data);
+    });
+
+    
   }
+
+
+  
+  transformToDataSource(data: any[]): DriveInformation[] {
+    return data.map(d => ({ 
+      machineName: d.MachineName,
+      name: d.Name,
+      totalSize: d.TotalSize,
+      availableFreeSpace: d.AvailableFreeSpace,
+      usageWarning: ((d.AvailableFreeSpace/d.TotalSize)*100 < 10)
+     }))
+  } 
+
+}

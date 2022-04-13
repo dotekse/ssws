@@ -1,13 +1,16 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ChartModule } from '@syncfusion/ej2-angular-charts';
+import { AccumulationDataLabelService, ChartModule, DataLabel } from '@syncfusion/ej2-angular-charts';
 import { AppComponent } from './app.component';
 import { DriveWidgetComponent } from './drive-widget/drive-widget.component';
 import { DataService } from './services/data.service';
 import { BytesToGigabytesPipe } from './bytes-to-gigabytes.pipe';
 import { AccumulationChartModule, PieSeriesService } from '@syncfusion/ej2-angular-charts';
 import { PieChartComponent } from './pie-chart/pie-chart.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatGridListModule} from '@angular/material/grid-list';
+
 
 @NgModule({
   declarations: [
@@ -20,12 +23,15 @@ import { PieChartComponent } from './pie-chart/pie-chart.component';
     BrowserModule,
     AccumulationChartModule,
     HttpClientModule,
-    ChartModule
+    ChartModule,
+    BrowserAnimationsModule,
+    MatGridListModule
   ],
   providers: [
     DataService,
     BytesToGigabytesPipe,
-    PieSeriesService  
+    PieSeriesService,
+    AccumulationDataLabelService
   ],
   bootstrap: [AppComponent]
 })

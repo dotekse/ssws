@@ -1,11 +1,15 @@
-<div *ngFor="let d of data">
-  <p>{{d['MachineName']}}</p>
-  <p>{{d['Name']}}</p>
-  <p>Total Size: {{d['TotalSize'] | bytesToGigabytes | number : '1.0-0'}}</p>
-  <p>Free Space: {{d['AvailableFreeSpace'] | bytesToGigabytes | number : '1.0-0'}}</p>
-  <ejs-accumulationchart>
-    <e-accumulation-series-collection>
-      <e-accumulation-series type='Pie' radius="20%" [dataSource]='[{name: "Used Space", value: d["TotalSize"] - d["AvailableFreeSpace"]}, {name: "Used Space", value: d["AvailableFreeSpace"]}]' xName='name' yName='value'></e-accumulation-series>
-    </e-accumulation-series-collection>
-  </ejs-accumulationchart>
+<div class="container">
+  <div class='widget' *ngFor="let d of data" [ngClass]="{ danger: d.usageWarning, free: !d.usageWarning }">
+    <p>{{d.machineName}}</p>
+    <p>{{d.name}}</p>
+    <p>Total Size: {{d.totalSize| bytesToGigabytes | number : '1.0-0'}}</p>
+    <p>Free Space: {{d.availableFreeSpace | bytesToGigabytes | number : '1.0-0'}}</p>
+    <div>
+      <ejs-accumulationchart height="200px" width="200px" background="transparent">
+        <e-accumulation-series-collection>
+          <e-accumulation-series type='Pie' radius="100%" [dataSource]='[{name: "Used Space", value: d.totalSize - d.availableFreeSpace | bytesToGigabytes | number : "1.0-0"}, {name: "Available Space", value: d.availableFreeSpace | bytesToGigabytes | number : "1.0-0"}]' xName='name' yName='value' [dataLabel]='datalabel'></e-accumulation-series>
+        </e-accumulation-series-collection>
+      </ejs-accumulationchart>
+    </div>
+  </div>  
 </div>
