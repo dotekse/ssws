@@ -7,6 +7,6 @@ export class DataService {
   constructor(private http: HttpClient) {}
 
   public getJson(): Observable<any> {
-    return this.http.get('../../assets/drives.json');
+    return this.http.get('./assets/drives.json');
   }
 }
